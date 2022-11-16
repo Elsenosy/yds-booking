@@ -32,10 +32,10 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
 });
 
 // Studios
-Route::group(['middleware' => ['api', 'auth:api', 'user_access:'.UserTypeEnum::STUDIO_OWNER], 'prefix' => 'studios'], function () {
+Route::group(['middleware' => ['api', 'auth:api'], 'prefix' => 'studios'], function () {
     $controller = StudioController::class;
     Route::get('/', [$controller, 'index']);
-    Route::post('/', [$controller, 'store']);
+    Route::post('/', [$controller, 'store'])->middleware('user_access:'.UserTypeEnum::STUDIO_OWNER);
 });
 
 // Employees

@@ -42,6 +42,11 @@ class ReservationController extends Controller
         return $this->sendSuccess('Reservations', ReservationResource::collection($reservations)->response()->getData(true));
     }
 
+    public function studios()
+    {
+        # code...
+    }
+
     /**
      * reserve
      *
